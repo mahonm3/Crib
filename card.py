@@ -10,5 +10,8 @@ class Card():
             self.value = int(self.face)
     def __str__(self):
         return self.face+self.suit[0]
+    def __eq__(self, other):
+        return self.suit==other.suit and self.face==other.face
 
-    
+
+  
