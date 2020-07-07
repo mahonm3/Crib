@@ -40,4 +40,50 @@ class HandCalculator():
 
         return score
 
+    def getPositionCounts(self, cards):
+        countByPosition = {}
+        for card in cards:
+            if card.position in countByPosition:
+                countByPosition[card.position] +=1
+            else:
+                countByPosition[card.position] = 1
+        return countByPosition
+
+
+
+
+    def calculateRunScore(self, cards):
+        runScore = 0
+        countsByPosition = self.getPositionCounts(cards)
+        sortedPositions = sorted(countsByPosition)
+
+        currentRunStart=0
+        lengthOfRun = 0
+        for i in range(0,len(sortedPositions)):
+            lengthOfRun +=1
+            if i<len(sortedPositions)-1 and sortedPositions[i+1] != 1+sortedPositions[i]:
+                if lengthOfRun >2:
+                    break
+                else:
+                    lengthOfRun = 0                
+                    currentRunStart +=1
+                continue
+        if lengthOfRun>2:
+            runScore=lengthOfRun
+            for i in range(currentRunStart, (currentRunStart+lengthOfRun)):
+                runScore=runScore*countsByPosition[sortedPositions[i]]
+                
+
+        return runScore
+
+
+            
+
+
+
+
+        
+
+
+
 
