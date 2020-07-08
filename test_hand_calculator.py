@@ -116,6 +116,34 @@ class TestHandCalculator(unittest.TestCase):
          Card("Club", "3")]
          )
         self.assertEqual(12, score)   
+
+    def testPair(self):
+        hc = HandCalculator()
+        score=hc.calculatePairScore([Card("Hearts", "A"), Card("Club", "2"), Card("Spade", "A"), Card("Diamond","3"),
+         Card("Club", "4")]
+         )
+        self.assertEqual(2, score)
+
+    def testTwoPair(self):
+        hc = HandCalculator()
+        score=hc.calculatePairScore([[Card("Hearts", "A"), Card("Club", "2"), Card("Spade", "A"), Card("Diamond","3"),
+         Card("Club", "2")]
+         )
+        self.assertEqual(4, score)
+
+    def testThreeOfAKind(self):
+        hc = HandCalculator()
+        score=hc.calculatePairScore([[Card("Hearts", "A"), Card("Club", "2"), Card("Spade", "A"), Card("Diamond","3"),
+         Card("Club", "A")]
+         )
+        self.assertEqual(6, score)
+
+    def testFourOfAKind(self):
+        hc = HandCalculator()
+        score=hc.calculatePairScore([[Card("Hearts", "A"), Card("Club", "2"), Card("Spade", "A"), Card("Diamond","A"),
+         Card("Club", "A")]
+         )
+        self.assertEqual(12, score)
         
     
 

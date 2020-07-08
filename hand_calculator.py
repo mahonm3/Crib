@@ -71,11 +71,26 @@ class HandCalculator():
         if lengthOfRun>2:
             runScore=lengthOfRun
             for i in range(currentRunStart, (currentRunStart+lengthOfRun)):
-                runScore=runScore*countsByPosition[sortedPositions[i]]
+                 runScore=runScore*countsByPosition[sortedPositions[i]]
                 
 
         return runScore
 
+    def calculatePairScore(self, cards):
+        pairScore = 0
+        countsByPosition = self.getPositionCounts(cards)
+        sortedPositions = sorted(countsByPosition)
+        
+        for i in range(0,len(sortedPositions)):
+            if countsByPosition[sortedPositions[i]]==2:
+                pairScore+=2
+            if countsByPosition[sortedPositions[i]]==3:
+                pairScore+=6
+            if countsByPosition[sortedPositions[i]]==4:
+                pairScore+=12
+        return pairScore
+            
+                
 
             
 
