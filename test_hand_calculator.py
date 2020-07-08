@@ -154,33 +154,33 @@ class TestHandCalculator(unittest.TestCase):
         
     def testFifteensAllFive(self):
         hc = HandCalculator()
-        score.hc.calculateFifteensScore([Card("Hearts", "A"), Card("Club", "2"), Card("Spade", "3"), Card("Diamond","4"),
+        score=hc.calculateFifteensScore([Card("Hearts", "A"), Card("Club", "2"), Card("Spade", "3"), Card("Diamond","4"),
          Card("Club", "5")]
         )
         self.assertEqual(2, score)
 
     def testFifteensQ5(self):
         hc = HandCalculator()
-        score.hc.calculateFifteensScore([Card("Hearts", "2"), Card("Club", "2"), Card("Spade", "Q"), Card("Diamond","2"),
+        score=hc.calculateFifteensScore([Card("Hearts", "2"), Card("Club", "2"), Card("Spade", "Q"), Card("Diamond","2"),
          Card("Club", "5")]
         )
         self.assertEqual(2, score)
 
     def testFifteensFour5s(self):
         hc = HandCalculator()
-        score.hc.calculateFifteensScore([Card("Hearts", "5"), Card("Club", "4"), Card("Spade", "5"), Card("Diamond","5"),
+        score=hc.calculateFifteensScore([Card("Hearts", "5"), Card("Club", "4"), Card("Spade", "5"), Card("Diamond","5"),
          Card("Club", "5")]
         )
         self.assertEqual(8, score)
 
     def testFifteensTwoQ5(self):
         hc = HandCalculator()
-        score.hc.calculateFifteensScore([Card("Hearts", "5"), Card("Club", "2"), Card("Spade", "Q"), Card("Diamond","5"),
+        score=hc.calculateFifteensScore([Card("Hearts", "5"), Card("Club", "2"), Card("Spade", "Q"), Card("Diamond","5"),
          Card("Club", "Q")]
         )
         self.assertEqual(8, score)
 
 
-        
+
 if __name__ == "__main__":
     unittest.main() 

@@ -90,17 +90,20 @@ class HandCalculator():
                 pairScore+=12
         return pairScore
 
-    def calculateFifteensScore(self, cards, currentSum=0, currentScore=0):
+    def calculateFifteensScore(self, cards, currentSum=0, currentScore=0, indent=""):
         sortedCards=sorted(cards, key=lambda x: x.value, reverse=True)
         for i in range(0,len(sortedCards)):
             card=sortedCards[i]
+            print(indent+" current score: "+str(currentScore)+", current sum: "+str(currentSum)+ ", current card: "+str(card))
             if card.value+currentSum==15:
                 currentScore+=2
+                
             elif card.value+currentSum>15:
                 continue
             else:
-                currentSum = card.value+currentSum
-                currentScore += self.calculateFifteensScore(sortedCards[i+1:len(sortedCards)], currentSum, currentScore)
+                if (i+1)<len(sortedCards):
+                    nextScore=self.calculateFifteensScore(sortedCards[i+1:len(sortedCards)], (card.value+currentSum), 0, indent+"   ")
+                    currentScore += nextScore
         return currentScore
 
 
