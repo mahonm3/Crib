@@ -89,16 +89,27 @@ class HandCalculator():
             if countsByPosition[sortedPositions[i]]==4:
                 pairScore+=12
         return pairScore
+
+    def calculateFifteensScore(self, cards, currentSum=0, currentScore=0):
+        sortedCards=sorted(cards, key=lambda x: x.value, reverse=True)
+        for i in range(0,len(sortedCards)):
+            card=sortedCards[i]
+            if card.value+currentSum==15:
+                currentScore+=2
+            elif card.value+currentSum>15:
+                continue
+            else:
+                currentSum = card.value+currentSum
+                currentScore += self.calculateFifteensScore(sortedCards[i+1:len(sortedCards)], currentSum, currentScore)
+        return currentScore
+
+
+
+
             
                 
 
             
-
-
-
-
-        
-
 
 
 
