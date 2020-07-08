@@ -126,21 +126,21 @@ class TestHandCalculator(unittest.TestCase):
 
     def testTwoPair(self):
         hc = HandCalculator()
-        score=hc.calculatePairScore([[Card("Hearts", "A"), Card("Club", "2"), Card("Spade", "A"), Card("Diamond","3"),
+        score=hc.calculatePairScore([Card("Hearts", "A"), Card("Club", "2"), Card("Spade", "A"), Card("Diamond","3"),
          Card("Club", "2")]
          )
         self.assertEqual(4, score)
 
     def testThreeOfAKind(self):
         hc = HandCalculator()
-        score=hc.calculatePairScore([[Card("Hearts", "A"), Card("Club", "2"), Card("Spade", "A"), Card("Diamond","3"),
+        score=hc.calculatePairScore([Card("Hearts", "A"), Card("Club", "2"), Card("Spade", "A"), Card("Diamond","3"),
          Card("Club", "A")]
          )
         self.assertEqual(6, score)
 
     def testFourOfAKind(self):
         hc = HandCalculator()
-        score=hc.calculatePairScore([[Card("Hearts", "A"), Card("Club", "2"), Card("Spade", "A"), Card("Diamond","A"),
+        score=hc.calculatePairScore([Card("Hearts", "A"), Card("Club", "2"), Card("Spade", "A"), Card("Diamond","A"),
          Card("Club", "A")]
          )
         self.assertEqual(12, score)
