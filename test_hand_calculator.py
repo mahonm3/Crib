@@ -144,6 +144,13 @@ class TestHandCalculator(unittest.TestCase):
          Card("Club", "A")]
          )
         self.assertEqual(12, score)
+
+    def testZeroPair(self):
+        hc = HandCalculator()
+        score=hc.calculatePairScore([Card("Hearts", "A"), Card("Club", "2"), Card("Spade", "3"), Card("Diamond","4"),
+         Card("Club", "5")]
+         )
+        self.assertEqual(0, score)
         
     
 
