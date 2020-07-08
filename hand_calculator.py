@@ -35,7 +35,10 @@ class HandCalculator():
             if isHandFlush == True:
                 score += 5
 
-            
+        score+=self.calculateRunScore([*hand, cutCard])
+        score+=self.calculatePairScore([*hand, cutCard])
+        score+=self.calculateFifteensScore([*hand, cutCard])
+                   
         
 
         return score
@@ -94,7 +97,7 @@ class HandCalculator():
         sortedCards=sorted(cards, key=lambda x: x.value, reverse=True)
         for i in range(0,len(sortedCards)):
             card=sortedCards[i]
-            print(indent+" current score: "+str(currentScore)+", current sum: "+str(currentSum)+ ", current card: "+str(card))
+            #print(indent+" current score: "+str(currentScore)+", current sum: "+str(currentSum)+ ", current card: "+str(card))
             if card.value+currentSum==15:
                 currentScore+=2
                 
@@ -106,6 +109,7 @@ class HandCalculator():
                     currentScore += nextScore
         return currentScore
 
+    
 
 
 

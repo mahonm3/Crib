@@ -180,7 +180,30 @@ class TestHandCalculator(unittest.TestCase):
         )
         self.assertEqual(8, score)
 
+    def testFifteensZero(self):
+        hc = HandCalculator()
+        score=hc.calculateFifteensScore([Card("Hearts", "2"), Card("Club", "2"), Card("Spade", "Q"), Card("Diamond","4"),
+         Card("Club", "Q")]
+        )
+        self.assertEqual(0, score)
 
+    def testCalculateScore29Hand(self):
+        hc=HandCalculator()
+        score=hc.calculateScore([Card("Hearts", "J"), Card("Club", "5"), Card("Diamond", "5"), Card("Spade", "5")],
+            Card("Hearts", "5"), True)
+        self.assertEqual(29, score)
+
+    def testCalculateScore1(self):
+        hc=HandCalculator()
+        score=hc.calculateScore([Card("Hearts", "7"), Card("Club", "8"), Card("Diamond", "8"), Card("Spade", "9")],
+            Card("Hearts", "6"), True)
+        self.assertEqual(16, score)
+
+    def testCalculateScore2(self):
+        hc=HandCalculator()
+        score=hc.calculateScore([Card("Hearts", "4"), Card("Hearts", "5"), Card("Hearts", "6"), Card("Hearts", "6")],
+            Card("Hearts", "6"), True)
+        self.assertEqual(26, score)
 
 if __name__ == "__main__":
     unittest.main() 
