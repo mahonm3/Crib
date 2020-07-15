@@ -13,6 +13,7 @@ class Game():
             self.playerPegHand[player]=[]
         self.currentDealer=None
         self.cutCard=None
+        self.kitty = []
 
     def setDealer(self, player):
         self.dealer=player
@@ -26,6 +27,10 @@ class Game():
                 for i in range(0,5):
                     self.playerHand[player].append(self.deck.drawCard())
             
-
-
+    def discardToKitty(self, player, cards):
+        for card in cards:
+            self.playerHand[player].remove(card)
+            self.kitty.append(card)
             
+
+
